@@ -13,11 +13,11 @@ const ZoomInfo = () => {
 
   return (
     <div
-      className="radial-progress bg-primary text-primary-content border-4 border-primary cursor-pointer ml-2"
+      className="radial-progress text-primary-content"
       style={
         {
           '--value': zoomValue,
-          '--size': '1.1rem',
+          '--size': '1.3rem',
           '--thickness': '0.2rem'
         } as CSSProperties
       }

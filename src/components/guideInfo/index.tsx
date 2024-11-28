@@ -19,12 +19,41 @@ const GuideInfo: React.FC = () => {
 
   return (
     <>
-      <div className="fixed bottom-5 left-5 flex flex-row justify-center items-center px-2.5 py-1.5 rounded-full bg-[#eef1ff]">
-        <InfoIcon
-          className="bg-white rounded-full cursor-pointer hover:opacity-70"
-          onClick={() => setShowModal(true)}
-        />
-        <ZoomInfo />
+      <div className="fixed bottom-5 left-5 flex flex-row justify-center items-center gap-2 px-2.5 py-1.5 rounded-full bg-[#eef1ff]">
+        <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center cursor-pointer hover:opacity-80">
+          <InfoIcon
+            className="w-5 h-5 text-primary-content"
+            onClick={() => setShowModal(true)}
+          />
+        </div>
+        <div
+          className={`w-8 h-8 rounded-full cursor-pointer relative shrink-0 hover:opacity-80 ${
+            language === 'en' ? 'bg-primary' : 'bg-primary'
+          }`}
+          onClick={handleChangLang}
+        >
+          <span
+            className={`w-6 h-6 transition-all duration-500 absolute top-1 left-1 text-primary-content text-center origin-center ${
+              language === 'en'
+                ? 'opacity-100 rotate-0'
+                : 'opacity-0 -rotate-45'
+            }`}
+          >
+            中
+          </span>
+          <span
+            className={`w-6 h-6 transition-all duration-500 absolute top-1 left-1 text-primary-content text-center text-base origin-center ${
+              language === 'zh'
+                ? 'opacity-100 rotate-0'
+                : 'opacity-0 rotate-45'
+            }`}
+          >
+            En
+          </span>
+        </div>
+        <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center cursor-pointer hover:opacity-80">
+          <ZoomInfo />
+        </div>
       </div>
       <Mask
         show={showModal}
@@ -45,32 +74,6 @@ const GuideInfo: React.FC = () => {
                 github.com/LHRUN/paint-board
               </a>
               {t('info.welecome')}⭐️
-            </div>
-
-            <div
-              className={`ml-5 h-8 w-8 rounded-full cursor-pointer relative shrink-0 hover:opacity-80 ${
-                language === 'en' ? 'bg-primary-content' : 'bg-primary'
-              }`}
-              onClick={handleChangLang}
-            >
-              <span
-                className={`w-6 h-6 transition-all duration-500 absolute top-1 left-1 text-neutral-content text-center origin-center ${
-                  language === 'en'
-                    ? 'opacity-100 rotate-0'
-                    : 'opacity-0 -rotate-45'
-                }`}
-              >
-                中
-              </span>
-              <span
-                className={`w-6 h-6 transition-all duration-500 absolute top-1 left-1 text-primary-content text-center text-base origin-center ${
-                  language === 'zh'
-                    ? 'opacity-100 rotate-0'
-                    : 'opacity-0 rotate-45'
-                }`}
-              >
-                En
-              </span>
             </div>
           </div>
           <GuideInfoSwiper />
